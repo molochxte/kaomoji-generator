@@ -71,30 +71,15 @@ function createMouthButtons() {
 }
 
 function switchTab(e){
-
-    tab_name = e.target.innerText;
     active_tab = e.target;
-    all_tabs = document.getElementsByClassName("tabs");
-    all_options = document.getElementsByClassName("options");
-    active_option = document.getElementById(tab_name);
-    console.log("tab_name", tab_name);
-    console.log("active_option",active_option);
-    console.log("all_options", all_options);
-    console.log("all_tabs", all_tabs);
-    console.log("active_tab", active_tab);
+    active_option = document.getElementById(e.target.innerText);
 
-  
     disableTabs();
     hideOptions();
+    
     active_tab.classList.add("text-purple-500");
     console.log(active_tab.classList);
     active_option.classList.remove("hidden");
-
-    // active_tab = the button that was clicked
-    // all_tabs = all buttons in the tabs class
-    // all_options = all options (emojis) in the options class
-    // active_option = the option that is currently active
-
 }
 
 function disableTabs(){

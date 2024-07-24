@@ -8,28 +8,6 @@
 </head>
 <body>
 
-<!-- <div class="flex justify-center items-center h-screen">
-
-  <h1 class="text-3xl text-purple-500">
-    Kaomoji
-  </h1>
-
-
-  <div class="flex flex-col items-center border-2">
-    <div id="kaomoji_display" class="text-2xl text-purple-500 py-4 px-4 "> ✧(≖ ◡ ≖✿) </div>
-    <div class="flex items-center gap-2">
-      <div> 
-        <h1 class="text-2xl  text-purple-500 text-center "> EYES </h1>
-        <div id="eye_buttons" class="grid grid-cols-3 "></div>
-      </div>
-      <div> 
-        <h1 class="text-2xl  text-purple-500 text-center"> NOSE </h1>
-        <div id="nose_buttons" class="grid grid-cols-3 "></div>
-      <div id="mouth_buttons" class="grid grid-cols-3 "></div>
-    </div>
-
-  </div> -->
-
   <div class="flex justify-center items-center h-screen">
   <div class="flex-col">
     <h1 class="text-3xl text-center text-purple-500 p-5">
@@ -38,17 +16,17 @@
     <div class="flex gap-4"> 
       <div id="selection_menus" class="border-2 rounded-md">
         <div class="flex-row items-center p-2">
-          <button id="tab_eye" class="rounded border-2 p-2" onClick="showEyeMenu()"> Eyes </button>
-          <button id="tab_mouth" class="rounded border-2 p-2" onClick="showMouthMenu()"> Mouth </button>
+          <button class="tabs rounded border-2 border-purple-500 p-2" onClick="switchTab(event)">Eyes</button>
+          <button class="tabs rounded border-2 p-2" onClick="switchTab(event)">Mouths</button>
         </div>
         <div class="flex flex-col items-center p-2">
-          <div id="eye_menu" class="grid grid-cols-3 hidden"></div>
-          <div id="mouth_menu" class="grid grid-cols-3 hidden "></div>
+          <div id="Eyes" class="options grid grid-cols-3 hidden"></div>
+          <div id="Mouths" class="options grid grid-cols-3 hidden "></div>
         </div>
       </div>
       <div class="flex-col p-2">
        <input id="kaomoji_display" class="border-2 p-2 rounded" type="text" value="✧(≖ ◡ ≖✿)">
-        <div id="options" class="flex p-2 gap-2">
+        <div id="settings" class="flex p-2 gap-2">
           <button id="copy_button" class="bg-purple-500 text-white py-2 px-4 rounded" onClick="copyToClipboard()">Copy</button>
           <button id="clear_button" class="bg-purple-500 text-white py-2 px-4 rounded" onClick="clearKaomoji()">Clear</button>
         </div>

@@ -8,15 +8,20 @@
 </head>
 <body>
 
-  <div class="flex justify-center items-center h-screen">
-  <div class="flex-col">
+  <div class="flex justify-center">
+  <div>
     <h1 class="text-3xl text-center text-purple-500 p-5">
       Kaomoji Generator
     </h1>
+    <p class="p-2"> 
+        <a class="text-purple-400" href="https://en.wikipedia.org/wiki/Kaomoji"> Kaomoji </a> (顔文字) are known as 'face characters', popularized during early internet (1980's) japan.  <br>
+      Create your own kaomoji! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+    </p>
+    
     <div class="flex gap-4"> 
       <div id="selection_menus" class="border-2 rounded-md">
         <div class="flex-row items-center p-2">
-          <button class="tabs rounded border-2 border-purple-500 p-2" onClick="switchTab(event)">Eyes</button>
+          <button class="tabs rounded border-2 p-2" onClick="switchTab(event)">Eyes</button>
           <button class="tabs rounded border-2 p-2" onClick="switchTab(event)">Mouths</button>
           <button class="tabs rounded border-2 p-2" onClick="switchTab(event)">Cheeks</button>
           <button class="tabs rounded border-2 p-2" onClick="switchTab(event)">Arms</button>
@@ -41,7 +46,9 @@
   </div>
 </div>
 
-  
+<div class="footer">
+  <p class="text-center text-white">Created by 🍓 Moloberry </p>
+</div>
 
 </body>
 </html>

@@ -1,3 +1,58 @@
+var eyes = [
+  " ",
+  "*",
+  "☆",
+  "o",
+  "-",
+  "^",
+  "°",
+  "♥",
+  "☉",
+  "□",
+  "✧",
+  "=",
+  "˘",
+  "︶",
+  "≖",
+  "⌒",
+  "◕",
+  "•",
+  "¬",
+  "ᓀ",
+  "ಠ",
+  "✧",
+  "Φ",
+  " ͡°",
+  "×",
+];
+var mouths = [
+  " ",
+  "-",
+  "_",
+  "o",
+  "O",
+  "u",
+  "w",
+  "v",
+  "3",
+  "︿",
+  "‸",
+  "~",
+  "ヮ",
+  "ᴥ",
+  "▽",
+  "Д",
+  "﹏",
+  "ᆺ",
+  " ͜ʖ",
+];
+var cheeks = [" ", "()", "[]", "{}", "ʕʔ"];
+var PairsArms = ["ᕕ ᕗ", "\\ ノ", "╮ ╭", "⊂ ⊃", "└ ┘", "┌ ┐"];
+var LeftArms = [" ", "\\", "ヽ", "ლ", "ᕕ", "⊂"];
+var RightArms = ["/", "ノ", "ᕗ", "╯", "つ", "シ"];
+var MouthEyes = ["ᐛ"];
+var kaomoji = [8];
+
 function copyToClipboard() {
   var copyText = document.getElementById("kaomoji_display");
   copyText.select();
@@ -6,6 +61,7 @@ function copyToClipboard() {
 }
 
 function clearKaomoji() {
+  deactivateButtons();
   document.getElementById("kaomoji_display").value = "";
   kaomoji = ["", "", "", "", "", "", ""];
 }
@@ -17,26 +73,6 @@ window.onload = function () {
   createCheekButtons();
   createArmButtons();
 };
-
-var eyes = [" ", "*", "o", "-", "^", "°", "♥", "☉", "✧", "=", "˘", "︶", "≖","⌒", "◕"];
-var mouths = [" ", "-", "_", "o", "O", "u", "w", "v", "3", "︿","~", "ヮ"];
-var cheeks = [" ", "()", "[]", "{}"];
-var arms = [" ", "\\", "/", "┌", "┐", "└", "┘", "┌", "┐"];
-var PairsArms = [
-  "ᕕ ᕗ",
-  "ヽ ノ",
-  "٩ ۶",
-  "ヽ ٩",
-  "٩ ノ",
-  "ヽ ۶",
-  "٩ ۶",
-  "ヽ ۶",
-  "٩ ノ",
-];
-var LeftArms = [" ", "\\", "ヽ", "٩", "ᕕ"];
-var RightArms = ["/", "ノ", "ᕗ"];
-var MouthEyes = ["ᐛ"];
-var kaomoji = [8];
 
 /* 
 
@@ -52,13 +88,16 @@ var kaomoji = [8];
 */
 // create 3x3 buttons in a div with id "buttons" that will change the text in the text area of id="kaomoji" to the corresponding kaomoji
 function createEyeButtons() {
-  console.log("Creating buttons...");
   var buttons = document.getElementById("Eyes");
   for (var i = 0; i < eyes.length; i++) {
     var button = document.createElement("button");
     button.classList.add("border-2", "rounded-lg", "p-2", "m-2");
     button.innerHTML = eyes[i];
     button.onclick = function () {
+      activateButton(this);
+      if (kaomoji[4] == "ᐛ") {
+        kaomoji[4] = "";
+      }
       kaomoji[3] = this.innerHTML;
       kaomoji[5] = this.innerHTML;
       document.getElementById("kaomoji_display").value = kaomoji.join("");
@@ -75,6 +114,7 @@ function createMouthButtons() {
     button.classList.add("border-2", "rounded-lg", "p-2", "m-2");
     button.innerHTML = mouths[i];
     button.onclick = function () {
+      activateButton(this);
       kaomoji[4] = this.innerHTML;
       document.getElementById("kaomoji_display").value = kaomoji.join("");
     };
@@ -82,10 +122,12 @@ function createMouthButtons() {
   }
 
   for (var i = 0; i < MouthEyes.length; i++) {
+    console.log("creating mouth eye buttons");  
     var button = document.createElement("button");
     button.classList.add("border-2", "rounded-lg", "p-2", "m-2");
     button.innerHTML = MouthEyes[i];
     button.onclick = function () {
+      activateButton(this);
       kaomoji[3] = "";
       kaomoji[5] = "";
       kaomoji[4] = this.innerHTML;
@@ -96,13 +138,13 @@ function createMouthButtons() {
 }
 
 function createCheekButtons() {
-  console.log("Creating buttons...");
   var buttons = document.getElementById("Cheeks");
   for (var i = 0; i < cheeks.length; i++) {
     var button = document.createElement("button");
     button.classList.add("border-2", "rounded-lg", "p-2", "m-2");
     button.innerHTML = cheeks[i];
     button.onclick = function () {
+      activateButton(this);
       kaomoji[1] = this.innerHTML[0];
       kaomoji[7] = this.innerHTML[1];
       document.getElementById("kaomoji_display").value = kaomoji.join("");
@@ -112,7 +154,6 @@ function createCheekButtons() {
 }
 
 function createArmButtons() {
-  console.log("Creating buttons...");
   var buttons = document.getElementById("Arms");
   // arms right
   for (var i = 0; i < RightArms.length; i++) {
@@ -120,6 +161,7 @@ function createArmButtons() {
     button.classList.add("border-2", "rounded-lg", "p-2", "m-2");
     button.innerHTML = RightArms[i];
     button.onclick = function () {
+      activateButton(this);
       resetArms();
       kaomoji[2] = this.innerHTML;
       kaomoji[8] = this.innerHTML;
@@ -133,6 +175,7 @@ function createArmButtons() {
     button.classList.add("border-2", "rounded-lg", "p-2", "m-2");
     button.innerHTML = LeftArms[i];
     button.onclick = function () {
+      activateButton(this);
       resetArms();
       kaomoji[0] = this.innerHTML;
       kaomoji[6] = this.innerHTML;
@@ -147,6 +190,7 @@ function createArmButtons() {
     button.classList.add("border-2", "rounded-lg", "p-2", "m-2");
     button.innerHTML = PairsArms[i];
     button.onclick = function () {
+      activateButton(this);
       resetArms();
       kaomoji[0] = this.innerHTML[0];
       kaomoji[8] = this.innerHTML[2];
@@ -162,6 +206,29 @@ function resetArms() {
   kaomoji[0] = " ";
   kaomoji[6] = " ";
 }
+
+function activateButton(e) {
+  // determine what tab is active
+  var active_tab =
+    document.getElementsByClassName("border-purple-500")[0].innerText;
+  buttons_in_tab = document
+    .getElementById(active_tab)
+    .getElementsByTagName("button");
+  for (var i = 0; i < buttons_in_tab.length; i++) {
+    buttons_in_tab[i].classList.remove("border-purple-500");
+    e.classList.add("border-purple-500");
+  }
+}
+
+function deactivateButtons() {
+  var buttons = document.getElementsByTagName("button");
+  for (var i = 0; i < buttons.length; i++) {
+    if (!buttons[i].classList.contains("tabs")) {
+      buttons[i].classList.remove("border-purple-500");
+    }
+  }
+}
+
 function switchTab(e) {
   active_tab = e.target;
   active_option = document.getElementById(e.target.innerText);
@@ -170,7 +237,6 @@ function switchTab(e) {
   hideOptions();
 
   active_tab.classList.add("border-purple-500");
-  console.log(active_tab.classList);
   active_option.classList.remove("hidden");
 }
 
@@ -186,4 +252,54 @@ function hideOptions() {
   for (var i = 0; i < all_options.length; i++) {
     all_options[i].classList.add("hidden");
   }
+}
+
+function randomizeKaomoji() {
+  clearKaomoji();
+  // eyes and cheeks comes in pairs
+  random_eyes = eyes[Math.floor(Math.random() * (eyes.length - 1)) + 1];
+  kaomoji[3] = random_eyes;
+  kaomoji[5] = random_eyes;
+
+  random_cheeks = cheeks[Math.floor(Math.random() * (cheeks.length - 1)) + 1];
+  kaomoji[1] = random_cheeks[0];
+  kaomoji[7] = random_cheeks[1];
+
+  random_mouths = mouths[Math.floor(Math.random() * (mouths.length - 1)) + 1];
+  kaomoji[4] = random_mouths;
+  if (random_mouths == "ᐛ") {
+    kaomoji[3] = "";
+    kaomoji[5] = "";
+  }
+
+  // pick randomly between left or right arms or both
+  random_arm_orientation = Math.floor(Math.random() * 3);
+  switch (random_arm_orientation) {
+    case 0:
+      arm = LeftArms[Math.floor(Math.random() * LeftArms.length)];
+      kaomoji[0] = arm;
+      kaomoji[6] = arm;
+      break;
+    case 1:
+      arm = RightArms[Math.floor(Math.random() * RightArms.length)];
+      kaomoji[2] = arm;
+      kaomoji[8] = arm;
+      break;
+    case 2:
+      arm = PairsArms[Math.floor(Math.random() * PairsArms.length)];
+      kaomoji[0] = arm[0];
+      kaomoji[8] = arm[2];
+      break;
+  }
+  document.getElementById("kaomoji_display").value = kaomoji.join(" ");
+}
+
+
+
+function saveKaomoji(){
+  var kaomoji_text = document.getElementById("kaomoji_display").value;
+  var kaomoji_list = document.getElementById("saved_kaomoji");
+  var kaomoji = document.createElement("li");
+  kaomoji.innerHTML = kaomoji_text;
+  kaomoji_list.appendChild(kaomoji);
 }

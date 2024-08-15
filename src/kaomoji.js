@@ -38,7 +38,7 @@ var mouths = [
   "︿",
   "‸",
   "~",
-  "ヮ",
+  "ヮ​",
   "ᴥ",
   "▽",
   "Д",
@@ -47,9 +47,9 @@ var mouths = [
   " ͜ʖ",
 ];
 var cheeks = [" ", "()", "[]", "{}", "ʕʔ"];
-var PairsArms = ["ᕕ ᕗ", "\\ ノ", "╮ ╭", "⊂ ⊃", "└ ┘", "┌ ┐"];
+var PairsArms = ["ᕕ ᕗ", "\\ ノ​", "╮ ╭", "⊂ ⊃", "└ ┘", "┌ ┐"];
 var LeftArms = [" ", "\\", "ヽ", "ლ", "ᕕ", "⊂"];
-var RightArms = ["/", "ノ", "ᕗ", "╯", "つ", "シ"];
+var RightArms = ["/", "ノ​", "ᕗ", "╯", "つ​", "シ​"];
 var MouthEyes = ["ᐛ"];
 var kaomoji = [8];
 
@@ -163,7 +163,7 @@ function createArmButtons() {
     button.onclick = function () {
       activateButton(this);
       resetArms();
-      kaomoji[2] = this.innerHTML + "​";
+      kaomoji[2] = this.innerHTML;
       kaomoji[8] = this.innerHTML;
       document.getElementById("kaomoji_display").value = kaomoji.join("");
     };
@@ -177,7 +177,7 @@ function createArmButtons() {
     button.onclick = function () {
       activateButton(this);
       resetArms();
-      kaomoji[0] = this.innerHTML + "​";
+      kaomoji[0] = this.innerHTML;
       kaomoji[6] = this.innerHTML;
       document.getElementById("kaomoji_display").value = kaomoji.join("");
     };

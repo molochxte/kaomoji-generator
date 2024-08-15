@@ -163,7 +163,7 @@ function createArmButtons() {
     button.onclick = function () {
       activateButton(this);
       resetArms();
-      kaomoji[2] = this.innerHTML;
+      kaomoji[2] = this.innerHTML + "​";
       kaomoji[8] = this.innerHTML;
       document.getElementById("kaomoji_display").value = kaomoji.join("");
     };
@@ -177,7 +177,7 @@ function createArmButtons() {
     button.onclick = function () {
       activateButton(this);
       resetArms();
-      kaomoji[0] = this.innerHTML;
+      kaomoji[0] = this.innerHTML + "​";
       kaomoji[6] = this.innerHTML;
       document.getElementById("kaomoji_display").value = kaomoji.join("");
     };
@@ -192,7 +192,7 @@ function createArmButtons() {
     button.onclick = function () {
       activateButton(this);
       resetArms();
-      kaomoji[0] = this.innerHTML[0];
+      kaomoji[0] = this.innerHTML[0] + "​";
       kaomoji[8] = this.innerHTML[2];
       document.getElementById("kaomoji_display").value = kaomoji.join("");
     };

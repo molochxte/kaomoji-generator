@@ -1,4 +1,4 @@
-var eyes = [
+const eyes = [
   " ",
   "*",
   "☆",
@@ -25,7 +25,7 @@ var eyes = [
   " ͡°",
   "×",
 ];
-var mouths = [
+const mouths = [
   " ",
   "-",
   "_",
@@ -46,11 +46,11 @@ var mouths = [
   "ᆺ",
   " ͜ʖ",
 ];
-var cheeks = [" ", "()", "[]", "{}", "ʕʔ"];
-var PairsArms = ["ᕕ ᕗ", "\\ ノ​", "╮ ╭", "⊂ ⊃", "└ ┘", "┌ ┐"];
-var LeftArms = [" ", "\\", "ヽ", "ლ", "ᕕ", "⊂"];
-var RightArms = ["/", "ノ​", "ᕗ", "╯", "つ​", "シ​"];
-var MouthEyes = ["ᐛ"];
+const cheeks = [" ", "()", "[]", "{}", "ʕʔ"];
+const PairsArms = ["ᕕ ᕗ", "\\ ノ​", "╮ ╭", "⊂ ⊃", "└ ┘", "┌ ┐"];
+const LeftArms = [" ", "\\", "ヽ", "ლ", "ᕕ", "⊂"];
+const RightArms = ["/", "ノ​", "ᕗ", "╯", "つ​", "シ​"];
+const MouthEyes = ["ᐛ"];
 var kaomoji = [8];
 
 function copyToClipboard() {
@@ -72,6 +72,7 @@ window.onload = function () {
   createMouthButtons();
   createCheekButtons();
   createArmButtons();
+  randomizeKaomoji();
 };
 
 /* 
@@ -86,7 +87,6 @@ window.onload = function () {
 7 -> arm
 
 */
-// create 3x3 buttons in a div with id "buttons" that will change the text in the text area of id="kaomoji" to the corresponding kaomoji
 function createEyeButtons() {
   var buttons = document.getElementById("Eyes");
   for (var i = 0; i < eyes.length; i++) {
@@ -107,7 +107,6 @@ function createEyeButtons() {
 }
 
 function createMouthButtons() {
-  console.log("Creating buttons...");
   var buttons = document.getElementById("Mouths");
   for (var i = 0; i < mouths.length; i++) {
     var button = document.createElement("button");
@@ -122,7 +121,6 @@ function createMouthButtons() {
   }
 
   for (var i = 0; i < MouthEyes.length; i++) {
-    console.log("creating mouth eye buttons");  
     var button = document.createElement("button");
     button.classList.add("border-2", "rounded-lg", "p-2", "m-2");
     button.innerHTML = MouthEyes[i];
@@ -192,7 +190,7 @@ function createArmButtons() {
     button.onclick = function () {
       activateButton(this);
       resetArms();
-      kaomoji[0] = this.innerHTML[0] + "​";
+      kaomoji[0] = this.innerHTML[0];
       kaomoji[8] = this.innerHTML[2];
       document.getElementById("kaomoji_display").value = kaomoji.join("");
     };
@@ -291,12 +289,11 @@ function randomizeKaomoji() {
       kaomoji[8] = arm[2];
       break;
   }
-  document.getElementById("kaomoji_display").value = kaomoji.join(" ");
+  document.getElementById("kaomoji_display").value = kaomoji.join("");
 }
 
-
-
-function saveKaomoji(){
+// TO DO
+function saveKaomoji() {
   var kaomoji_text = document.getElementById("kaomoji_display").value;
   var kaomoji_list = document.getElementById("saved_kaomoji");
   var kaomoji = document.createElement("li");

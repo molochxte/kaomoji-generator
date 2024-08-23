@@ -252,6 +252,7 @@ function hideOptions() {
   }
 }
 
+
 function randomizeKaomoji() {
   clearKaomoji();
   // eyes and cheeks comes in pairs

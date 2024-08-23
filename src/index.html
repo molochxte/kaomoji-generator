@@ -8,23 +8,23 @@
 </head>
 <body>
 
-  <div class="flex justify-center">
+  <div class="main">
   <div>
-    <h1 class="text-3xl text-center text-purple-500 p-5">
-      Kaomoji Generator
+    <h1>
+      Kaomoji Creator
     </h1>
-    <p class="p-2"> 
-        <a class="text-purple-400" href="https://en.wikipedia.org/wiki/Kaomoji"> Kaomoji </a> (顔文字) are known as 'face characters', popularized during early internet (1980's) japan.  <br>
+    <p> 
+        <a href="https://en.wikipedia.org/wiki/Kaomoji"> Kaomoji </a> (顔文字) are known as 'face characters', popularized during early internet (1980's) japan.  <br>
       Create your own kaomoji! (ﾉ◕ヮ◕)ﾉ <br>  
     </p>
     
     <div class="flex gap-4"> 
-      <div id="selection_menus" class="border-2 rounded-md">
+      <div id="selection_menus">
         <div class="flex-row items-center p-2">
-          <button class="tabs rounded border-2 p-2" onClick="switchTab(event)">Eyes</button>
-          <button class="tabs rounded border-2 p-2" onClick="switchTab(event)">Mouths</button>
-          <button class="tabs rounded border-2 p-2" onClick="switchTab(event)">Cheeks</button>
-          <button class="tabs rounded border-2 p-2" onClick="switchTab(event)">Arms</button>
+          <button class="tabs" onClick="switchTab(event)">Eyes</button>
+          <button class="tabs" onClick="switchTab(event)">Mouths</button>
+          <button class="tabs" onClick="switchTab(event)">Cheeks</button>
+          <button class="tabs" onClick="switchTab(event)">Arms</button>
         </div>
         <div class="flex flex-col items-center p-2">
           <div id="Eyes" class="options grid grid-cols-3 hidden"></div>
@@ -35,10 +35,11 @@
       </div>
       <div class="flex-col p-2">
        <input id="kaomoji_display" class="border-2 p-2 rounded" type="text" value="✧(≖ ◡ ≖✿)">
-        <div id="settings" class="flex p-2 gap-2">
-          <button id="copy_button" class="bg-purple-500 text-white py-2 px-4 rounded" onClick="copyToClipboard()">Copy</button>
-          <button id="clear_button" class="bg-purple-500 text-white py-2 px-4 rounded" onClick="clearKaomoji()">Clear</button>
-          <button id="randomize_button" class="bg-purple-500 text-white py-2 px-4 rounded" onClick="randomizeKaomoji()">Randomize</button>
+        <div class="flex p-2 gap-2">
+          <!-- Get rid of these so many id's and classes? clean it up!! -->
+          <button id="copy_button" class="settings" onClick="copyToClipboard()">Copy</button>
+          <button id="clear_button" class="settings" onClick="clearKaomoji()">Clear</button>
+          <button id="randomize_button" class="settings" onClick="randomizeKaomoji()">Randomize</button>
           <!-- <button id="save_button" class="bg-purple-500 text-white py-2 px-4 rounded" onClick="saveKaomoji()">Save</button> -->
         </div>
       </div>
@@ -49,7 +50,7 @@
 </div>
 
 <div class="footer">
-  <a class="text-purple-400" href="https://github.com/molochxte/kaomoji-generator">View updates on Github</a><p class="text-center text-white">Created by 🍓 Moloberry </p> 
+  <a href="https://github.com/molochxte/kaomoji-generator">View updates on Github</a><p>Created by 🍓 Moloberry </p> 
 </div>
 
 </body>
